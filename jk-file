@@ -1,11 +1,11 @@
 pipeline {
-			agent any 
+			agent(slave-01) 
 			stages {
 				stage('BUILD') {
 					steps {
 						sh '''
 							#!/bin/bash 
-              git pull https://github.com/harishh1265/java-codes.git
+                                                        git clone https://github.com/harishh1265/java-codes.git
 							echo "build stage in Jenkinsfile"
 							sleep 5
 						'''
