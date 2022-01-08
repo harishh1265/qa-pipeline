@@ -2,7 +2,7 @@ pipeline {
 			agent none
 			stages {
 				stage('BUILD') {
-					agent { "$slave-01" }
+					node(slave-01)
 					steps {
 						sh '''
 							#!/bin/bash 
@@ -14,7 +14,7 @@ pipeline {
 					}
 				}	
 				stage('DEPLOY') {
-					agent { "$slave-02" }
+					node(slave-02)
 					steps {
 						sh 'echo "Final DEPLOY stage in Jenkinsfile"; sleep 5'	
 					}
