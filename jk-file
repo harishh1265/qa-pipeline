@@ -1,0 +1,35 @@
+pipeline {
+			agent any 
+			stages {
+				stage('BUILD') {
+					steps {
+						sh '''
+							#!/bin/bash 
+              git pull https://github.com/harishh1265/java-codes.git
+							echo "build stage in Jenkinsfile"
+							sleep 5
+						'''
+					}
+				}
+				stage('TEST1') {
+					steps {
+						sh 'echo "first stage test in Jenkinsfile"; sleep 5'
+					}	
+				}
+				stage('TEST2') {
+					steps {
+						sh 'echo "Second stage test in Jenkinsfile"; sleep 5'
+					}	
+				}
+				stage('DEPLOY') {
+					steps {
+						sh 'echo "Final DEPLOY stage in Jenkinsfile"; sleep 5'	
+					}
+				}
+				stage('STATUS') {
+					steps {
+						sh 'echo "Pipeline job completed"; sleep 5'	
+					}
+				}
+			}
+		}
