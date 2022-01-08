@@ -8,6 +8,7 @@ pipeline {
 							sleep 5
 					}
 				}
+				agent slave-02
 				stage('DEPLOY') {
 					steps {
 						sh 'echo "Final DEPLOY stage in Jenkinsfile"; sleep 5'	
