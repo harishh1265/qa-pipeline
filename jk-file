@@ -8,10 +8,9 @@ pipeline {
 							sleep 5
 					}
 				}
-				agent slave-02
 				stage('DEPLOY') {
 					steps {
-						sh 'echo "Final DEPLOY stage in Jenkinsfile"; sleep 5'	
+						sh 'scp -r /opt/jenkins/workspace/pipeline-job/target/hello-world-war-1.0.0.war/ ec2-user@172.31.44.2:/home/ec2-user/'	
 					}
 				}
 				stage('STATUS') {
