@@ -1,27 +1,20 @@
 pipeline {
-			agent(slave-01) 
+			agent non
 			stages {
 				stage('BUILD') {
+					agent { lable "${Slave-01}" }
 					steps {
 						sh '''
 							#!/bin/bash 
                                                         git clone https://github.com/harishh1265/java-codes.git
+							mvn clean install
 							echo "build stage in Jenkinsfile"
 							sleep 5
 						'''
 					}
-				}
-				stage('TEST1') {
-					steps {
-						sh 'echo "first stage test in Jenkinsfile"; sleep 5'
-					}	
-				}
-				stage('TEST2') {
-					steps {
-						sh 'echo "Second stage test in Jenkinsfile"; sleep 5'
-					}	
-				}
+				}	
 				stage('DEPLOY') {
+					agent { lable "${Slave-02}" }
 					steps {
 						sh 'echo "Final DEPLOY stage in Jenkinsfile"; sleep 5'	
 					}
