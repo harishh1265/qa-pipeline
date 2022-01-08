@@ -3,13 +3,8 @@ pipeline {
 			stages {
 				stage('BUILD') {
 					steps {
-						sh '''
-							#!/bin/bash 
-                                                        git clone https://github.com/harishh1265/java-codes.git
-							mvn clean install
-							echo "build stage in Jenkinsfile"
+						git branch: 'main', url: 'https://github.com/harishh1265/java-codes.git'
 							sleep 5
-						'''
 					}
 				}
 			node('slave-02')
