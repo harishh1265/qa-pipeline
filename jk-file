@@ -4,7 +4,6 @@ pipeline {
 				stage('BUILD') {
 					steps {
 						git branch: 'main', url: 'https://github.com/harishh1265/java-codes.git'
-						mvn clean install
 							sleep 5
 					}
 				}
