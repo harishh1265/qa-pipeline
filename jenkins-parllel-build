@@ -7,7 +7,6 @@ pipeline {
                     sleep 5
                       }
                   }
-                  
              stage ('writing a parallel exicution job') {
                 parallel {
                     stage ('Build') {
@@ -18,20 +17,7 @@ pipeline {
                                 sleep 5s
                                }
                             }
-                       stage ('Deploy') {
-                            steps {
-                                  sh 'cp -r /var/lib/jenkins/workspace/pipeline-job/target/hello-world-war-1.0.0.war/ /home/ec2-user/tomcat/apache-tomcat-8.5.73/webapps/'
-                                  echo "deploy is succesful"
-                                  sleep 5
-                                  }
-                             }
-                        }
-                   }
-                 stage ('Test') {
-                        steps { 
-                            echo "test is succesful"
-                            sleep 5
-                                }
-                             }
+                        } 
+                            }
                    }
            }
