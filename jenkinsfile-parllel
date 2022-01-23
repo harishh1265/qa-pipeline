@@ -1,0 +1,42 @@
+pipeline{
+    agent any 
+        stages{
+            stage ('BUILD') {
+                steps {
+                  echo "this is to test wheather build will take place"
+                  sleep 5
+                  }
+                }
+            stage ('PARALLEL DEPLOY') {
+                parallel {
+                    stage ('deploy') {
+                        steps {
+                            echo "the file is being deployed"
+                            sleep 5
+                            }
+                          }
+                     stage ('testing-1') {
+                        steps {
+                             echo "this is a testing phase"
+                             sleep 5
+                             }
+                          }
+                      stage ('testing-2') {
+                        steps {
+                             echo "this is a testing phase"
+                             sleep 5
+                             }
+                          }
+                      
+                        }
+                      }
+                stage ('final test') {
+                    steps {
+                        echo "succesful"
+                        sleep 5
+                        }
+                      }
+                  
+                     
+              }
+            }
